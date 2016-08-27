@@ -16,7 +16,7 @@ create IK+ .mod from ultrastar creator .txt
 -------------------------------------------
 
 ```
-$ ./ikconv --readsid tune.sid --readusc ultrastartextfile.txt --writeikmod mymod.module
+$ ./ikconv --readsid tune.sid --readusc ultrastartextfile.txt --writeikmod mymodule.mod
 ```
 
 add custom .mod to IK+ image
