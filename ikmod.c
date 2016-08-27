@@ -395,14 +395,16 @@ static int writetiming(FILE *f)
     frames = 50; // FIXME
     if(ikformat == 0) {
         put16(f, 0x100 + frames);
+        fputc(1 ,f);
+        fputc(0 ,f);
         fputc(0 ,f);
         fputc(0xff ,f);
     } else {
-        fprintf(f, "    !byte <$%04x, $01 + >$%04x, 0, $ff ; frames, end of list\n", frames, frames);
+        fprintf(f, "    !byte <$%04x, $01 + >$%04x, 1, 0, 0, $ff ; frames, end of list\n", frames, frames);
     }
     num++;
 
-    return num * 4;
+    return (num * 4) + 2;
 }
 
 static int writepadding(FILE *f)

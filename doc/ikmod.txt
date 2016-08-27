@@ -44,6 +44,7 @@ Song Data Section
 +$xxxx          <song text> in screencode
 
                  - max. 40 characters per line, plus terminating 0.
+                 - one extra 0 marks a blank line
                  - extra $ff marks end of text
 
 +$xxxx          <timing data> 4-byte chunks:
@@ -58,8 +59,10 @@ Song Data Section
 
                 +0  <frames to wait before stopping> (lo, hi)
                     Note that HiByte count starts with $01 and not $00
-                +2  $00 for last entry
-                +3  $ff for last entry
+                +2  $01 for last entry
+                +3  $00 for last entry
+                +4  $00 for last entry
+                +5  $ff for last entry
 
 Padding
 =======
