@@ -23,10 +23,7 @@ add custom .mod to IK+ image
 ----------------------------
 
 ```
-$ cp IKplus_contrib_beta1_player_only.bin IKplus_test.bin
-$ cat mymodule1.mod >> IKplus_test.bin
-$ cat mymodule2.mod >> IKplus_test.bin
-$ cat mymodule3.mod >> IKplus_test.bin
+$ cat IKplus_contrib_beta1_player_only.bin mymodule.mod >> IKplus_test.bin
 $ cartconv -p -t easy -i IKplus_test.bin -o IKplus_test.crt
 ```
 
