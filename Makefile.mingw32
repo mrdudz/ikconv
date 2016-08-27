@@ -1,0 +1,14 @@
+
+#VERBOSE=--verbose
+#VERBOSE=--verbose --verbose
+#TESTING=-DTESTING
+
+CC=mingw32-gcc
+
+all: ikconv.exe
+	
+ikconv.exe: Makefile.mingw32 main.c lrc.c ultrastar.c ikmod.c sid.c karaoke.h  Makefile
+	$(CC) $(TESTING) -O3 -W -Wall -Wextra -o ikconv.exe main.c
+
+clean:
+	rm -f ikconv.exe

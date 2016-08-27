@@ -1,0 +1,67 @@
+################################################################################
+# International Karaoke EF module file format v3                    2016-05-30 #
+################################################################################
+
+Header
+======
+
+offset  length
+--------------------------------------------------------------------------------
++$0000   3       $C9, $CB, $AB       INVERTED "IK+" as indicator for easyflash ROM scan
+
++$0003   2       songname_offset     offset from file start to song name string
++$0005   2       authorname_offset   offset from file start to author name string
+
++$0007   2       music_init_addr     SID tune init call addr
++$0009   2       music_play_addr     SID tune play call addr
++$000b   1       speed_flag          0: single speed 1: double speed
+
++$000c   2       songdata_offset     offset from file start to song data section
++$000e   2       songdata_length     length of song data section
++$0010   2       songdata_addr       addr to load song data to (usually equal to the load addr of sid tune)
++$0012   2       songtext_addr       addr of the song text
+
++$0014   2       timingdata_addr     addr of the timing data
+
++$0016   1       start_counter       flag, 1: lyrics start immediately (use countdown), 0: song has intro (no countdown)
+
++$0017   2       volume_addr         addr to patch for fading the volume ($0000 for standard $d418 fade)
++$0019   1       fade_speed          speed of the end of sid fadeout - default $20
++$001a   2       fade_delay          # of frames playing music after karaoke has finished - default $0202
+
+
+Song Info Section
+=================
+
++$xxxx   <=$20  <song name> in screencode + terminating zero
++$xxxx   <=$20  <author name> in screencode + terminating zero
+
+Song Data Section
+=================
+
++$xxxx          <sid tune> binary ($0800-$9fff, $48 rasterlines per call)
+
++$xxxx          <song text> in screencode
+
+                 - max. 40 characters per line, plus terminating 0.
+                 - extra $ff marks end of text
+
++$xxxx          <timing data> 4-byte chunks:
+
+                +0  <frames to wait before highlighting> (lo, hi)
+                    Note that HiByte count starts with $01 and not $00
+                +2  <Line start position of syllable>
+                    Starts with $00 for 1st character in line
+                +3 <Number of characters to highlight minus 1 (0 means 1!)>
+
+                the last entry (after which playing stops) looks like this:
+
+                +0  <frames to wait before stopping> (lo, hi)
+                    Note that HiByte count starts with $01 and not $00
+                +2  $00 for last entry
+                +3  $ff for last entry
+
+Padding
+=======
+
++$xxxx          extra padding up to next $1000 page

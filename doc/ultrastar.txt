@@ -1,0 +1,306 @@
+.Txt Files in More Depth
+
+By now I think I've covered the main ins and outs of UltraStar, so guides from
+hereon are more likely to be bonus materials.
+Whilst I've talked about the primary aspects of .txt files, it may be of
+interest to some people to understand exactly what the finer details of the
+files mean. They're actually very straightforward files and aren't difficult to
+get your head round. This is one of the many things that make the game work; I
+guess it encourages people to create songs for the game. Sadly, I won't be able
+to produce an extensive guide on how to do this. I've made a handful of .txt
+files using the MIDI conversion tool within UltraStar itself, and I will talk
+about this at some point. However, this method does have its flaws and I think
+it is falling out of popularity with the more 'professional' song makers out
+there.
+
+So, as I've mentioned before, each song file starts with a series of #tags.
+
+ #TITLE:      (required) Title of the song
+ #ARTIST:     (required) Artist behind the song
+ #MP3:        (required) The name of the MP3 being used for this song. Must have
+                         a .mp3 extension included here
+ #GAP:        (required) The amount of time, in milliseconds, before the lyrics
+                         start. This allows for any instrumental (or other type
+                         of) introduction to the song. It is important to note
+                         the number of the first note below. If it is not 0
+                         (which is rare) then the #GAP will be less straight-
+                         forward. If the lyrics aren't set to start until 8
+                         beats into the song, but the singing starts straight
+                         away, then the #GAP may need to be set to a negative
+                         number, to force the lyrics to start early.
+ #BPM:        (required) Beats per minute. This signifies the rate at which the
+                         text should display. Put simply, fast songs have a
+                         higher BPM, slow songs have a lower BPM. To complicate
+                         it slightly, the BPM can be upped for slower songs as
+                         long as more beats are added in the main body of the
+                         song below. If the BPM of a song is high then it
+                         generally means a good, smooth .txt file with more
+                         attention to subtle changes in tone. But if that means
+                         nothing to you, then you don't need to worry about this
+                         tag. If it is a good .txt file, then it won't need
+                         changing.
+ #GENRE:      (optional) The genre of the song. As UltraStar has a 'sort by
+                         genre' option, it's a useful tag to use. That, and the
+                         search option uses the word(s) in the #GENRE tag when
+                         you're on the song selection screen, so you can
+                         automatically find all 'rock' songs, for example, if
+                         you use this tag.
+ #EDITION:    (optional) Typically refers to the SingStar edition, if
+                         applicable, that the .txt file is taken from. For
+                         organisational purposes, it's good to leave this tag in.
+ #COVER:      (optional) Typically the single/album art appropriate for the
+                         song, to be displayed on the song selection screen.
+                         This is not necessary but it does brighten up the look
+                         of the game (and makes certain songs identifiable when
+                         not selected). This must be in .jpg format and the .jpg
+                         extension must be displayed here.
+ #VIDEO:      (optional) The name of the video file used for this song. Must
+                         have the file extension included out of the many types
+                         of video file that UltraStar accepts.
+ #BACKGROUND: (optional) If you don't have a video file, then you may prefer to
+                         have a background image displayed instead of a plain
+                         background or visualization. This must be in .jpg
+                         format and should have the .jpg extension attached. If
+                         the song is set to have a #VIDEO file and is linked in
+                         properly, then this tag is disregarded. If the .txt is
+                         set to have a #VIDEO but the video is not linked in
+                         properly for whatever reason, then the game will auto-
+                         matically display the background image.
+ #RELATIVE:   (optional) This is an unusual tag that I will talk about later. It
+                         is simply set to YES or NO. If it is set to YES, then
+                         it specifies a particular format of .txt file that
+                         functions in a different way to a typical .txt file. If
+                         the tag is absent, or is set to NO, then the .txt file
+                         functions as the others do. It is essential for this
+                         tag to be applied on a relative .txt file (these are
+                         rare. If you find one on USDB then the tag will be
+                         readily applied anyway).
+
+When the tags finish, then the main data for displaying the lyrics and notes, at
+the appropriate times and for the appropriate lengths of time, begins. That is,
+unless the song is a duet song. If it is a duet, then the file should start with
+P1, with P2 appearing somewhere in the middle.
+As you will see, the .txt is sort of divided into 5 columns from hereon, with
+spaces separating each one. Take the first line of the .txt below, for example.
+The first column is :, the second is 0, the third is 2, the fourth is 12, and
+the fifth is Tee. Each row of .txt applies to a different syllable or note.
+Multiple syllables should not be included on the same line; in the example
+below, “Teenage” takes up two separate lines. The exception to the rule is when
+the note is a freestyle one, because no points are available then anyway.
+Sometimes people do add more than one syllable to a line, but it technically
+shouldn't be done and means that the .txt is imperfect. It's not really possible
+to sing two syllables without breaking up the note. There are some exceptions,
+though, as you'll see below: where it reads 'family' below, it is set to 2
+syllables, rather than 3. This is because Mika sings 'fam-lee,' rather than
+'fam-il-ee.'
+
+ : 0 2 12 Tee
+ : 2 2 12 nage
+ : 6 6 12 dreams
+ - 12
+ : 12 2 9 in
+ : 14 2 7 a
+ : 16 3 12 tee
+ : 20 3 12 nage
+ : 24 4 16 cir
+ : 28 3 14 cus
+ - 32
+ : 32 2 16 Run
+ : 34 1 16 ning
+ : 36 2 16 a
+ : 38 4 17 round
+ - 42
+ : 42 2 16 like
+ : 44 2 14 ~
+ : 46 2 12 a
+ : 48 2 12 clown
+ : 50 2 14 ~
+ : 52 4 16 on
+ : 56 3 11 pur
+ : 60 3 12 pose
+ - 64
+ : 64 1 12 Who
+ : 66 2 12 gives
+ : 68 2 9 a
+ : 70 4 12 damn
+ - 74
+ : 74 2 9 a
+ : 76 2 12 bout
+ : 78 2 9 the
+ : 80 1 12 fa
+ : 82 1 12 mily
+ : 84 4 12 you
+ : 88 4 16 come
+ : 92 3 14 from?
+ - 96
+ : 96 1 16 No
+ : 98 2 16 gi
+ : 100 2 16 ving
+ : 102 4 17 up
+ - 106
+ : 106 2 16 when
+ : 108 2 14 you're
+ : 110 1 12 ~
+ : 112 2 12 young
+ : 114 2 14 and
+ : 116 4 16 you
+ : 120 4 11 want
+ : 124 3 12 some
+
+*** The first column ***
+
+This can be one of 4 things: :, *, F, or -. Here's a rundown of what they mean...
+
+ : Regular note
+ * Golden note
+ F Freestyle syllable
+ - Line break (separates lyrics into suitable lines).
+
+ Line breaks are different to other types of row, in that they consist of a
+ hyphen ( - ) and either one or two numbers. If it contains one number, it
+ determines the beat at which the previous line will disappear. For example, in
+ the first line of the song above, the 'Teenage dreams' line disappears as soon
+ as it's been sung, on beat 12. If the line break contains 2 numbers, the first
+ number determines when the first line disappears, and the second determines
+ when the next line will appear. There is no example of this type of line above,
+ as it's a fast moving song with no proper breaks from singing – line breaks
+ containing two numbers are generally for songs with a large instrumental break
+ in them. Two numbers aren't at all necessary, however, as the game auto-
+ matically puts the next line up when it is approaching – it's only if you want
+ to control when it happens that you need to worry about the 'second' number.
+So, effectively, the first column states the nature of the note, or if it's a
+line break. It's pretty straightforward.
+
+*** The second column ***
+
+This specifies the number of beats into the song at which point this syllable
+appears. The higher the BPM, the sooner the beat will appear. This isn't
+something you can really adjust without an image representation of the notes,
+but it's the way that the game understands it.
+
+*** The third column ***
+
+This states the number of beats that the note goes on for. The longer the note,
+the larger the number. Technically, the length of the note in question should
+finish before the next beat starts. 'Tee,' for example, in the first line of the
+example, goes on for exactly 2 beats, and the 'nage' syllable picks up on beat
+2, immediately after 'Tee' finishes. If they overlap, then scoring full points
+for the song is rendered impossible, as you can't sing 2 notes at the same time,
+even if they only overlap fleetingly.
+
+*** The fourth column ***
+
+This contains a number code for the pitch of the syllable. Unfortunately, I
+don't have a list of which numbers correspond to which notes, though I believe
+that '0' is C1, so I guess you work either up or down from there (negative
+numbers are accepted).
+
+*** The fifth column ***
+
+Contains the text to be sung at that very syllable. As I've touched on, this
+should specifically refer to one portion of text for any words that are over 1
+syllable long. In many cases, singers extend the syllable that they sing to show
+off their vocal range, and as you may have noticed, the standard format to
+represent this is to use '~' to show that you are extending the syllable to a
+different pitch. In the example above, 'you're' would normally be a single
+syllable, but Mika sings that first part and drops his voice slightly towards
+the end, so it will read as 'you're~' on the game itself.
+One of the most important things to bear in mind with this column is that
+UltraStar will automatically join the words together. You therefore need to
+include spaces at the end of each word, but do not include spaces for syllables
+in the beginning or middle of a word.
+So, in the first example, if no spaces were included after each word, the song
+would read like this in-game:
+
+ Teenagedreams
+ Inateenagecircus
+ Runningaround
+ Like~aclown~onpurpose
+
+If you copy and paste the text in the first example, you will see that spaces
+appear at the appropriate points to stop this from happening, such as after
+'age,' and 'ing.' Spaces are not necessary just before line breaks, but you can
+still use them.
+Conversely, if you put a space after every syllable, it would read like this:
+
+ Tee nage dreams
+ In a tee nage cir cus
+ Run ning a round
+ Like ~ a clown ~ on pur pose
+
+Perhaps this error isn't quite as bad as the first one, but it should still be
+avoided as it looks... stupid. Remember only to include spaces at the end of a
+word, not at the end of a syllable.
+Finally, it is very important to include 'E' at the end of the song, to tell the
+game when it finishes, or it will not work:
+
+ : 1602 2 12 We
+ : 1605 2 12 are
+ : 1608 2 12 not
+ - 1611
+ : 1611 2 12 what
+ : 1614 3 12 you
+ : 1618 2 12 think
+ : 1621 2 12 we
+ : 1624 3 12 are
+ - 1628
+ : 1628 1 12 We
+ : 1630 2 12 are
+ * 1632 5 12 gol
+ * 1638 3 12 den
+ - 1642
+ : 1642 2 12 We
+ : 1645 2 12 are
+ * 1648 5 12 gol
+ * 1654 9 12 den
+ E
+
+Do not include anything after the E, such as an extra line break, or the song
+may crash the game. Also, avoid putting a line break just before the E – this
+can confuse the game, too.
+Relative .txt Files
+As I mentioned earlier, .txt files with a #RELATIVE:YES tag included are of a
+different nature to normal .txt files. To be perfectly honest, I hate them. If
+they contain errors, they're difficult to track down and fix. However, given how
+different they are to normal ones, it wouldn't be as extensive a guide if I
+overlooked them.
+
+ #ARTIST:Beyonce
+ #TITLE:Crazy In Love
+ #MP3:Beyonce - Crazy In Love.mp3
+ #BPM:198,4
+ #GAP:15500
+ #VIDEO:Beyonce feat. Jay-Z - Crazy In Love [VD#0,0].mpg
+ #RELATIVE:YES
+ : 0 2 62 Uh
+ : 4 4 57 oh
+ : 8 2 62 uh
+ : 12 3 57 oh
+ - 15 16
+ : 0 2 62 Uh
+ : 2 2 57 oh
+ : 6 2 57 oh
+ : 8 2 58 no
+ : 10 2 57 no
+ - 14 16
+ : 0 2 62 Uh
+ : 4 4 57 oh
+ : 8 2 62 uh
+ : 12 3 57 oh
+ - 15 16
+ : 0 2 62 Uh
+ : 2 2 57 oh
+ : 6 2 57 oh
+ : 8 2 58 no
+ : 10 2 57 no
+
+As you'll see, each line in the song counts from 0, rather from the very start
+of the song. These types of files are fewer and far between now, but there are
+still odds ones that you may come across.
+I think I've covered the various aspects of .txt files now – most of it, of
+course, you'll never have to understand, though it may be useful to know a
+little more about them for troubleshooting purposes, and if you fancy making
+your own songs, this will serve as a good starting point. Like I said, I can't
+help much there, but I will do an entry soon sharing what I do know about song
+creation that may help to get you going.
+
