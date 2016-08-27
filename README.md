@@ -23,12 +23,11 @@ add custom .mod to IK+ image
 ----------------------------
 
 ```
-$ cp IKplus_v2_release.bin IKplus_v2_release_patched.bin
-$ cat mymodule1.mod >> IKplus_v2_release_patched.bin
-$ cat mymodule2.mod >> IKplus_v2_release_patched.bin
-$ cat mymodule3.mod >> IKplus_v2_release_patched.bin
-$ dd if=/dev/null of=IKplus_v2_release_patched.bin bs=1 count=0 seek=1048576
-$ cartconv -t easy -i IKplus_v2_release_patched.bin -o IKplus_v2_release_patched.crt
+$ cp IKplus_contrib_beta1_player_only.bin IKplus_test.bin
+$ cat mymodule1.mod >> IKplus_test.bin
+$ cat mymodule2.mod >> IKplus_test.bin
+$ cat mymodule3.mod >> IKplus_test.bin
+$ cartconv -p -t easy -i IKplus_test.bin -o IKplus_test.crt
 ```
 
 ================================================================================
