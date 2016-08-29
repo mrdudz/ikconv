@@ -300,6 +300,7 @@ static int writetext(FILE *f)
     fseek(f, text_offset, SEEK_SET);
     writescreencode(f, karaoke_text);
     fputc(0, f);
+    fputc(0, f);
     fputc(0xff, f);
     return 0;
 }
@@ -428,7 +429,7 @@ static int writeik(char *name)
         return -1;
     }
 
-    text_length = strlen(karaoke_text) + 2;
+    text_length = strlen(karaoke_text) + 3;
 
     songname_offset = 0x1c;
     author_offset = songname_offset + strlen(karaoke_songname) + 1;
@@ -525,7 +526,7 @@ static int writeik(char *name)
 //        fprintf(f, "\n    !binary \"%s\",,$76+2 ; PSID v1\n", sid_filename); // psid v1
         fprintf(f, "\ntextaddr:\n");
         writescreencode(f, karaoke_text);
-        fprintf(f, "    !byte $ff\n");
+        fprintf(f, "    !byte $00, $ff\n");
         fprintf(f, "\ntimingaddr:\n");
         writetiming(f);
         fprintf(f, "}\n");

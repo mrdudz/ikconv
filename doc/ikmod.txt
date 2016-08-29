@@ -45,7 +45,7 @@ Song Data Section
 
                  - max. 40 characters per line, plus terminating 0.
                  - one extra 0 marks a blank line
-                 - extra $ff marks end of text
+                 - extra $00, $ff marks end of text
 
 +$xxxx          <timing data> 4-byte chunks:
 
